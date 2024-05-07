@@ -5,10 +5,10 @@ from allauth.usersessions.models import UserSession
 
 class UserSessionAuthentication(authentication.BaseAuthentication):
     def authenticate(self, request):
-        session_token = request.headers.get('x-session-token')
+        session_token = request.headers.get("x-session-token")
         if session_token:
             try:
-                session = UserSession.objects.get(token=session_token)
+                session = UserSession.objects.get(session_key=session_token)
                 if not session.purge():
                     user = session.user
                     if user and user.is_active:

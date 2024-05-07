@@ -12,11 +12,16 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from .common import *  # noqa
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "localhost:3000"]
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
+
+CORS_ALLOW_CREDENTIALS = True
