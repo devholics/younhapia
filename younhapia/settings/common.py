@@ -184,11 +184,6 @@ ROOT_HOSTCONF = "younhapia.hosts"
 DEFAULT_HOST = "www"
 
 
-# django-allauth
-
-ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
-
-
 # Sessions
 
 SESSION_ENGINE = "yholics.usersessions.backends.db"
