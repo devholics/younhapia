@@ -2,6 +2,7 @@ from importlib import import_module
 
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
+from django.middleware.csrf import get_token
 
 
 def _get_secret(request):
@@ -26,9 +27,7 @@ class UserSessionMiddleware:
             # Requests with session token is considered safe.
             # We bypass CSRF protection to use SessionAuthentication.
             request.session = self.SessionStore(session_token)
-            secret = _get_secret(request)
-            if secret:
-                request.META[settings.CSRF_HEADER_NAME] = secret
+            request.csrf_processing_done = True
 
         request.session.user_agent = request.META.get("HTTP_USER_AGENT", "")
         request.session.ip = request.META.get("REMOTE_ADDR", "")
