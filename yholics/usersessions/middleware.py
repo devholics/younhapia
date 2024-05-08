@@ -2,13 +2,8 @@ from importlib import import_module
 
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
-from django.middleware.csrf import get_token
 
-
-def _get_secret(request):
-    if settings.CSRF_USE_SESSIONS:
-        return request.session.get(settings.CSRF_SESSION_KEY)
-    return request.COOKIES.get(settings.CSRF_COOKIE_NAME)
+from .utils import get_session_token
 
 
 class UserSessionMiddleware:
@@ -22,12 +17,11 @@ class UserSessionMiddleware:
             raise ImproperlyConfigured(
                 "The Django session middleware must be installed prior to this."
             )
-        session_token = request.headers.get("x-session-token")
+        session_token = get_session_token(request)
         if session_token is not None:
-            # Requests with session token is considered safe.
-            # We bypass CSRF protection to use SessionAuthentication.
+            # Session token takes precedence over session cookie
+            # to prevent CSRF attacks.
             request.session = self.SessionStore(session_token)
-            request.csrf_processing_done = True
 
         request.session.user_agent = request.META.get("HTTP_USER_AGENT", "")
         request.session.ip = request.META.get("REMOTE_ADDR", "")

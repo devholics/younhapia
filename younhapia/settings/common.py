@@ -173,7 +173,7 @@ AUTH_USER_MODEL = "yholics.User"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.SessionAuthentication",
+        "yholics.authentication.UserSessionAuthentication",
     ]
 }
 
@@ -187,3 +187,8 @@ DEFAULT_HOST = "www"
 # Sessions
 
 SESSION_ENGINE = "yholics.usersessions.backends.db"
+
+
+# Misc
+
+LOGIN_REDIRECT_URL = "/"
