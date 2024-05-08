@@ -173,7 +173,7 @@ AUTH_USER_MODEL = "yholics.User"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "yholics.authentication.UserSessionAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
     ]
 }
 
