@@ -22,6 +22,6 @@ ALLOWED_HOSTS = ["localhost", "localhost:3000"]
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
+ROOT_URLCONF = "younhapia.urls.dev"
 
-CORS_ALLOW_CREDENTIALS = True
+LOGIN_REDIRECT_URL = "http://localhost:3000"

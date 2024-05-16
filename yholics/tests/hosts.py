@@ -2,7 +2,4 @@
 
 from django_hosts import host
 
-
-host_patterns = [
-    host(r'www', 'yholics.tests.urls', name='www')
-]
+host_patterns = [host(r"www", "yholics.tests.urls", name="www")]

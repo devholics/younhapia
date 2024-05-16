@@ -21,9 +21,9 @@ class YounhapiaAdminSite(admin.AdminSite):
                     return HttpResponseRedirect(index_path)
                 from django.contrib.auth.views import redirect_to_login
 
-                return redirect_to_login(request.get_full_path())
+                return redirect_to_login(request.build_absolute_uri())
             if not self.has_permission(request):
-                # TODO: attach a message
+                # TODO: attach a message?
                 return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
             return view(request, *args, **kwargs)
 

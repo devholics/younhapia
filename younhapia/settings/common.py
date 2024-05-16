@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.twitter_oauth2",
-    "corsheaders",
     "yholics",
     "yholics.usersessions",
 ]
@@ -58,7 +57,6 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "yholics.usersessions.middleware.UserSessionMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -67,8 +65,6 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
     "django_hosts.middleware.HostsResponseMiddleware",
 ]
-
-ROOT_URLCONF = "younhapia.urls.www"
 
 TEMPLATES = [
     {
@@ -83,6 +79,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 # allauth
                 "django.template.context_processors.request",
+                # wiki
                 "sekizai.context_processors.sekizai",
             ],
         },
@@ -187,8 +184,3 @@ DEFAULT_HOST = "www"
 # Sessions
 
 SESSION_ENGINE = "yholics.usersessions.backends.db"
-
-
-# Misc
-
-LOGIN_REDIRECT_URL = "/"

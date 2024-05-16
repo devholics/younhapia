@@ -6,8 +6,7 @@ from ..models import User
 
 
 @override_settings(
-    ROOT_URLCONF='yholics.tests.urls',
-    ROOT_HOSTCONF='yholics.tests.hosts'
+    ROOT_URLCONF="yholics.tests.urls", ROOT_HOSTCONF="yholics.tests.hosts"
 )
 class UserSessionTestCase(TestCase):
     @classmethod
@@ -24,12 +23,8 @@ class UserSessionTestCase(TestCase):
         csrf_token = self.client.cookies["csrftoken"].value
         response = self.client.post(
             settings.LOGIN_URL,
-            {
-                "login": "younha",
-                "password": "holic",
-                "csrfmiddlewaretoken": csrf_token
-            },
-            follow=True
+            {"login": "younha", "password": "holic", "csrfmiddlewaretoken": csrf_token},
+            follow=True,
         )
 
     def test_session_token_csrf_exempt(self):
@@ -38,7 +33,7 @@ class UserSessionTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         response = self.client.post(
             reverse("dummy"),
-            headers={"x-session-token": self.client.session.session_key}
+            headers={"x-session-token": self.client.session.session_key},
         )
         self.assertEqual(response.status_code, 200)
 
@@ -47,7 +42,6 @@ class UserSessionTestCase(TestCase):
         response = self.client.get(reverse("admin:index"))
         self.assertEqual(response.status_code, 200)
         response = self.client.post(
-            reverse("dummy"),
-            headers={"x-session-token": "whatever"}
+            reverse("dummy"), headers={"x-session-token": "whatever"}
         )
         self.assertEqual(response.status_code, 403)
