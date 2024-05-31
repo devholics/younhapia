@@ -6,7 +6,8 @@ from ..models import User
 
 
 @override_settings(
-    ROOT_URLCONF="yholics.tests.urls", ROOT_HOSTCONF="yholics.tests.hosts"
+    ROOT_HOSTCONF="yholics.tests.hosts",
+    ROOT_URLCONF="yholics.tests.urls",
 )
 class UserSessionTestCase(TestCase):
     @classmethod
@@ -26,6 +27,7 @@ class UserSessionTestCase(TestCase):
             {"login": "younha", "password": "holic", "csrfmiddlewaretoken": csrf_token},
             follow=True,
         )
+        return response
 
     def test_session_token_csrf_exempt(self):
         self.client.force_login(self.staff)
