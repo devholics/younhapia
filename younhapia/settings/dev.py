@@ -18,7 +18,7 @@ from .common import *  # noqa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "localhost:3000"]
+ALLOWED_HOSTS = ["localhost", "localhost:3000", "127.0.0.1"]
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
 
@@ -30,6 +30,7 @@ LOGIN_REDIRECT_URL = "http://localhost:3000/"
 
 WAGTAIL_FRONTEND_LOGIN_URL = "/login/"
 
-STATIC_ROOT = BASE_DIR / "static"
-MEDIA_ROOT = BASE_DIR / "media"
+STATIC_ROOT = BASE_DIR / "assets/static"
+
+MEDIA_ROOT = BASE_DIR / "assets/media"
 MEDIA_URL = "/media/"

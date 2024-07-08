@@ -15,17 +15,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
 from yholics.views import login_gateway
 
 
-urlpatterns = [
-    path("manage/", admin.site.urls),
-    path("accounts/", include("allauth.urls")),
-    path("auth/", include("allauth.headless.urls")),
-    path("cms/", include("kkappu.admin_urls")),
-    path("login/", login_gateway, name="yholics_login"),
-    path("", include("wagtail.urls")),
-]
+# Only for development!
+if settings.DEBUG:
+    urlpatterns = [
+        path("manage/", admin.site.urls),
+        path("accounts/", include("allauth.urls")),
+        path("auth/", include("allauth.headless.urls")),
+        path("cms/", include("kkappu.admin_urls")),
+        path("login/", login_gateway, name="yholics_login"),
+        path("", include("wagtail.urls")),
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    urlpatterns = []
