@@ -15,9 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.http import HttpResponse
-from django.urls import path
+from django.urls import include, path
+
+from yholics.views import login_gateway
 
 urlpatterns = [
-    path("", lambda r: HttpResponse("hello world")),
+    path("manage/", include("kkappu.admin_urls")),
+    path("login/", login_gateway, name="yholics_login"),
+    path("", include("wagtail.urls")),
 ]

@@ -1,7 +1,10 @@
 # A dummy hostconf for testing
 
-from django.conf import settings
-
 from django_hosts import host
 
-host_patterns = [host(r"www", settings.ROOT_URLCONF, name="www")]
+from younhapia.hosts import host_patterns as orig_host_patterns
+
+
+host_patterns = orig_host_patterns + [
+    host(r"dummy", "yholics.tests.urls", name="dummy")
+]
