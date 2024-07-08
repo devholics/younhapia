@@ -14,8 +14,8 @@ jobs:
       postgres:
         image: postgres:13-bullseye
         env:
-          POSTGRES_USER: younha
-          POSTGRES_PASSWORD: younha
+          POSTGRES_USER: younhapia
+          POSTGRES_PASSWORD: younhapia
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -38,7 +38,7 @@ jobs:
         run: |
             mkdir conf
             echo '{"db_host": "localhost", ' > conf/secrets.json
-            echo '"db_password": "younha", ' >> conf/secrets.json
+            echo '"db_password": "younhapia", ' >> conf/secrets.json
             echo '"secret_key": "a"}' >> conf/secrets.json
       - name: Run tests
         run: poetry run pytest
