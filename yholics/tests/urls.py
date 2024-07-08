@@ -1,7 +1,6 @@
 # A dummy urlconf for testing
 
-from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -14,8 +13,5 @@ def _dummy_view(_):
 
 
 urlpatterns = [
-    path("manage/", admin.site.urls),
-    path("accounts/", include("allauth.urls")),
-    path("auth/", include("allauth.headless.urls")),
-    path("dummy", _dummy_view, name="dummy"),
+    path("", _dummy_view, name="dummy"),
 ]

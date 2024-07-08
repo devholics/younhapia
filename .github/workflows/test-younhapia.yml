@@ -1,0 +1,44 @@
+name: Tests
+run-name: Test Younhapia
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test-younha:
+    runs-on: ubuntu-20.04
+
+    services:
+      postgres:
+        image: postgres:13-bullseye
+        env:
+          POSTGRES_USER: younhapia
+          POSTGRES_PASSWORD: younhapia
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install poetry
+        run: pipx install poetry
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'poetry'
+      - run: poetry install --with dev
+      - name: Create secrets.json
+        working-directory: ..
+        run: |
+            mkdir conf
+            echo '{"db_host": "localhost", ' > conf/secrets.json
+            echo '"db_password": "younhapia", ' >> conf/secrets.json
+            echo '"secret_key": "a"}' >> conf/secrets.json
+      - name: Run tests
+        run: poetry run pytest

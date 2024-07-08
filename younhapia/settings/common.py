@@ -33,15 +33,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites.apps.SitesConfig",
     "django.contrib.humanize.apps.HumanizeConfig",
-    "django_nyt.apps.DjangoNytConfig",
-    "mptt",
-    "sekizai",
-    "sorl.thumbnail",
-    "wiki.apps.WikiConfig",
-    "wiki.plugins.attachments.apps.AttachmentsConfig",
-    "wiki.plugins.notifications.apps.NotificationsConfig",
-    "wiki.plugins.images.apps.ImagesConfig",
-    "wiki.plugins.macros.apps.MacrosConfig",
     "django_hosts",
     "rest_framework",
     "allauth",
@@ -50,11 +41,26 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.twitter_oauth2",
     "yholics",
     "yholics.usersessions",
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail',
+    'modelcluster',
+    'taggit',
+    'kkappu',
 ]
 
 MIDDLEWARE = [
     "django_hosts.middleware.HostsRequestMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "yholics.usersessions.middleware.UserSessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -62,6 +68,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
     "allauth.account.middleware.AccountMiddleware",
     "django_hosts.middleware.HostsResponseMiddleware",
 ]
@@ -79,8 +86,6 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 # allauth
                 "django.template.context_processors.request",
-                # wiki
-                "sekizai.context_processors.sekizai",
             ],
         },
     },
@@ -184,3 +189,11 @@ DEFAULT_HOST = "www"
 # Sessions
 
 SESSION_ENGINE = "yholics.usersessions.backends.db"
+
+
+# Wagtail
+
+WAGTAIL_SITE_NAME = "Younhapia"
+
+WAGTAILIMAGES_IMAGE_MODEL = 'kkappu.KkappuImage'
+WAGTAILDOCS_DOCUMENT_MODEL = 'kkappu.KkappuDocument'

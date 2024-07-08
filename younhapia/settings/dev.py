@@ -24,4 +24,12 @@ CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
 
 ROOT_URLCONF = "younhapia.urls.dev"
 
-LOGIN_REDIRECT_URL = "http://localhost:3000"
+LOGIN_URL = "/login/"
+GLOBAL_LOGIN_URL = "http://localhost:8000/accounts/login/"
+LOGIN_REDIRECT_URL = "http://localhost:3000/"
+
+WAGTAIL_FRONTEND_LOGIN_URL = "/login/"
+
+STATIC_ROOT = BASE_DIR / "static"
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/media/"

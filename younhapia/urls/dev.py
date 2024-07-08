@@ -16,14 +16,16 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.http import HttpResponse
 from django.urls import include, path
+
+from yholics.views import login_gateway
+
 
 urlpatterns = [
     path("manage/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
     path("auth/", include("allauth.headless.urls")),
-    path("notifications/", include("django_nyt.urls")),
-    path("wiki/", include("wiki.urls")),
-    path("", lambda r: HttpResponse("hello world")),
+    path("cms/", include("kkappu.admin_urls")),
+    path("login/", login_gateway, name="yholics_login"),
+    path("", include("wagtail.urls")),
 ]

@@ -33,3 +33,9 @@ class YounhapiaAdminSite(admin.AdminSite):
         if not getattr(view, "csrf_exempt", False):
             inner = csrf_protect(inner)
         return update_wrapper(inner, view)
+
+    def login(self, request, extra_context=None):
+        from django.contrib.auth.views import redirect_to_login
+
+        admin_index = reverse("admin:index", current_app=self.name)
+        return redirect_to_login(request.build_absolute_uri(admin_index))
