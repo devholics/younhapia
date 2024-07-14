@@ -2,12 +2,12 @@ FROM python:3.12-alpine AS build
 
 WORKDIR /usr/src/app
 
-RUN apk add --no-cache poetry
+RUN apk add --no-cache build-base libpq-dev
+RUN pip install poetry
+
 RUN python -m venv /opt/venv
 ENV VIRTUAL_ENV="/opt/venv"
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-
-RUN apk add --no-cache build-base libpq-dev
 
 COPY ./pyproject.toml ./poetry.lock ./
 RUN poetry install --with prod --without dev
