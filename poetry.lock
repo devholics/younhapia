@@ -406,12 +406,12 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 name = "django-allauth"
-version = "0.63.4"
+version = "0.63.6"
 description = "Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "django_allauth-0.63.4.tar.gz", hash = "sha256:db7adb630ee5742956c0b15fce562d52714ad7c62f9097510b33b143e548375b"},
+    {file = "django_allauth-0.63.6.tar.gz", hash = "sha256:f15f49defb09e0604dad5214e53a69a1f723cb03176bb115c8930bcd19b91749"},
 ]
 
 [package.dependencies]
@@ -1524,13 +1524,13 @@ zstd = ["zstandard (>=0.18.0)"]
 
 [[package]]
 name = "wagtail"
-version = "6.1.2"
+version = "6.1.3"
 description = "A Django content management system."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "wagtail-6.1.2-py3-none-any.whl", hash = "sha256:6858f89c4a050cbbb1702ce3cb605b8360b736c296c93193c4e72ea87427d431"},
-    {file = "wagtail-6.1.2.tar.gz", hash = "sha256:fdb82c6cd6f6ae5c1f7b2312166969d8601015b65cbb29ad120efac727d399c1"},
+    {file = "wagtail-6.1.3-py3-none-any.whl", hash = "sha256:b6c4d5705adf51a5e49ea416032dd0a6534588fc31c5c9a95f698e6ddec0a203"},
+    {file = "wagtail-6.1.3.tar.gz", hash = "sha256:8f4908ab1b6b963a8aa7adf8f0ec738cd1dc79b9816c6d5f59018f600a404378"},
 ]
 
 [package.dependencies]
@@ -1596,4 +1596,4 @@ wand = ["Wand (>=0.6,<1.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "d7496828072d2e02af6d4dbbd4e2842ad4c97982ce77583772499cda84bc3c16"
+content-hash = "a13b6b6ce7a015de65d73b4f76162b159f4aae72919cf0653d037e452fab1456"
