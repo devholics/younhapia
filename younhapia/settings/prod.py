@@ -21,12 +21,16 @@ WAGTAIL_FRONTEND_LOGIN_URL = "/login/"
 STATIC_HOST = "static.younhalibrary.com"
 STATIC_URL = "https://static.younhalibrary.com/"
 STATIC_ROOT = BASE_DIR / "assets/static"
-MEDIA_ROOT = DATA_DIR / "assets/media"
 MEDIA_URL = "/media/"
 
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
+        "OPTIONS": {
+            "bucket_name": SECRETS.get("GCS_BUCKET_NAME"),
+            "querystring_auth": False,
+            "file_overwrite": False,
+        }
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
