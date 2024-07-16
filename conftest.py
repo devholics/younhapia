@@ -7,12 +7,10 @@ import pytest
 
 class HostsClient(Client):
     def generic(self, method, path, *args, **extra):
-        """Used by all methods."""
         # Populate the host header from the URL host, to play nicely with django-hosts
         parsed_url = urlsplit(path)
         scheme = parsed_url.scheme
         netloc = parsed_url.netloc
-        path = urlunsplit(["", ""] + list(parsed_url[2:]))
         if scheme:
             extra["wsgi.url_scheme"] = scheme
         if netloc:

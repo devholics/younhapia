@@ -27,7 +27,14 @@ STORAGES = {
     "default": {
         "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
         "OPTIONS": {
-            "bucket_name": SECRETS.get("GCS_BUCKET_NAME"),
+            "bucket_name": SECRETS.get("GCS_DEFAULT_BUCKET_NAME"),
+            "file_overwrite": False,
+        }
+    },
+    "public": {
+        "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
+        "OPTIONS": {
+            "bucket_name": SECRETS.get("GCS_PUBLIC_BUCKET_NAME"),
             "querystring_auth": False,
             "file_overwrite": False,
         }
@@ -36,3 +43,5 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+WAGTAILIMAGES_RENDITION_STORAGE = "public"

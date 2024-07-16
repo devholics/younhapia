@@ -2,7 +2,7 @@ name: Build and publish
 run-name: Build and publish Younhapia
 on:
   push:
-    branches: ['main']
+#    branches: ['main']
     tags: ['v*']
 env:
   REGISTRY: ghcr.io
