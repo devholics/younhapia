@@ -29,7 +29,7 @@ STORAGES = {
         "OPTIONS": {
             "bucket_name": SECRETS.get("GCS_DEFAULT_BUCKET_NAME"),
             "file_overwrite": False,
-        }
+        },
     },
     "public": {
         "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
@@ -37,7 +37,7 @@ STORAGES = {
             "bucket_name": SECRETS.get("GCS_PUBLIC_BUCKET_NAME"),
             "querystring_auth": False,
             "file_overwrite": False,
-        }
+        },
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",

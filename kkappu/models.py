@@ -1,8 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from wagtail.images.models import AbstractImage, AbstractRendition
 from wagtail.documents.models import AbstractDocument
+from wagtail.images.models import AbstractImage, AbstractRendition
 
 
 class KkappuImage(AbstractImage):
@@ -26,12 +26,12 @@ class KkappuImage(AbstractImage):
 
 
 class KkappuRendition(AbstractRendition):
-    image = models.ForeignKey(KkappuImage, on_delete=models.CASCADE, related_name='renditions')
+    image = models.ForeignKey(
+        KkappuImage, on_delete=models.CASCADE, related_name="renditions"
+    )
 
     class Meta:
-        unique_together = (
-            ('image', 'filter_spec', 'focal_point_key'),
-        )
+        unique_together = (("image", "filter_spec", "focal_point_key"),)
 
 
 class KkappuDocument(AbstractDocument):

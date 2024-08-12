@@ -25,22 +25,28 @@ def _process_urlpatterns(patterns):
     # Remove password reset view and replace login view
     for pattern in patterns:
         if isinstance(pattern, URLResolver):
-            result.append(URLResolver(
-                pattern.pattern,
-                _process_urlpatterns(pattern.url_patterns),
-                pattern.default_kwargs,
-                pattern.app_name,
-                pattern.namespace,
-            ))
+            result.append(
+                URLResolver(
+                    pattern.pattern,
+                    _process_urlpatterns(pattern.url_patterns),
+                    pattern.default_kwargs,
+                    pattern.app_name,
+                    pattern.namespace,
+                )
+            )
         elif isinstance(pattern, URLPattern):
             if pattern.name == "wagtailadmin_login":
-                result.append(URLPattern(
-                    pattern.pattern,
-                    login_router,
-                    pattern.default_args,
-                    pattern.name,
-                ))
-            elif pattern.name is None or not pattern.name.startswith("wagtailadmin_password_reset"):
+                result.append(
+                    URLPattern(
+                        pattern.pattern,
+                        login_router,
+                        pattern.default_args,
+                        pattern.name,
+                    )
+                )
+            elif pattern.name is None or not pattern.name.startswith(
+                "wagtailadmin_password_reset"
+            ):
                 result.append(pattern)
     return result
 

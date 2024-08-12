@@ -22,7 +22,6 @@ from django.urls import include, path
 
 from yholics.views import login_gateway
 
-
 # Only for development!
 if settings.DEBUG:
     urlpatterns = [

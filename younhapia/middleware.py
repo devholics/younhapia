@@ -9,7 +9,9 @@ from whitenoise.middleware import WhiteNoiseMiddleware
 class SupersonicMiddleware(WhiteNoiseMiddleware):
     def __init__(self, get_response):
         super().__init__(get_response)
-        self.static_host = getattr(settings, "STATIC_HOST", urlparse(settings.STATIC_URL or "").netloc)
+        self.static_host = getattr(
+            settings, "STATIC_HOST", urlparse(settings.STATIC_URL or "").netloc
+        )
 
     def __call__(self, request):
         host = request.get_host()

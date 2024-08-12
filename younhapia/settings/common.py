@@ -41,20 +41,20 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.twitter_oauth2",
     "yholics",
     "yholics.usersessions",
-    'wagtail.contrib.forms',
-    'wagtail.contrib.redirects',
-    'wagtail.embeds',
-    'wagtail.sites',
-    'wagtail.users',
-    'wagtail.snippets',
-    'wagtail.documents',
-    'wagtail.images',
-    'wagtail.search',
-    'wagtail.admin',
-    'wagtail',
-    'modelcluster',
-    'taggit',
-    'kkappu',
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail",
+    "modelcluster",
+    "taggit",
+    "kkappu",
 ]
 
 MIDDLEWARE = [
@@ -144,7 +144,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [str(PROJECT_PACKAGE.joinpath('static'))]
+STATICFILES_DIRS = [str(PROJECT_PACKAGE.joinpath("static"))]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -196,5 +196,5 @@ SESSION_ENGINE = "yholics.usersessions.backends.db"
 
 WAGTAIL_SITE_NAME = "Younhapia"
 
-WAGTAILIMAGES_IMAGE_MODEL = 'kkappu.KkappuImage'
-WAGTAILDOCS_DOCUMENT_MODEL = 'kkappu.KkappuDocument'
+WAGTAILIMAGES_IMAGE_MODEL = "kkappu.KkappuImage"
+WAGTAILDOCS_DOCUMENT_MODEL = "kkappu.KkappuDocument"

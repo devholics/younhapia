@@ -1,9 +1,8 @@
 from urllib.parse import urlparse, urlunparse
 
 from django.conf import settings
-from django.http import QueryDict, HttpResponseRedirect
+from django.http import HttpResponseRedirect, QueryDict
 from django.shortcuts import resolve_url
-
 
 REDIRECT_FIELD_NAME = "next"
 
