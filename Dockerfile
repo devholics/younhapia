@@ -1,16 +1,15 @@
 FROM python:3.12-alpine AS build
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/
 
 WORKDIR /usr/src/app
 
 RUN apk add --no-cache build-base libpq-dev
-RUN pip install poetry
 
 RUN python -m venv /opt/venv
 ENV VIRTUAL_ENV="/opt/venv"
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-COPY ./pyproject.toml ./poetry.lock ./
-RUN poetry install --with prod --without dev
+COPY ./pyproject.toml ./uv.lock ./
+RUN uv sync --frozen --group prod
 
 FROM python:3.12-alpine
 
