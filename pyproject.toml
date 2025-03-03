@@ -17,6 +17,8 @@ dependencies = [
 [dependency-groups]
 dev = [
     "psycopg[binary]>=3.2.5",
+]
+test = [
     "pytest-django>=4.10.0",
 ]
 prod = [
@@ -31,6 +33,7 @@ conflicts = [
         { group = "prod" },
     ]
 ]
+default-groups = ["dev", "test"]
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "younhapia.settings.test"
