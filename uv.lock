@@ -735,7 +735,7 @@ name = "pytest"
 version = "8.3.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'group-9-younhapia-dev' and extra == 'group-9-younhapia-prod')" },
     { name = "iniconfig" },
     { name = "packaging" },
     { name = "pluggy" },
@@ -923,11 +923,13 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "psycopg", extra = ["binary"], marker = "extra == 'group-9-younhapia-dev'" },
-    { name = "pytest-django" },
 ]
 prod = [
     { name = "gunicorn" },
     { name = "psycopg", extra = ["c"], marker = "extra == 'group-9-younhapia-prod'" },
+]
+test = [
+    { name = "pytest-django" },
 ]
 
 [package.metadata]
@@ -942,11 +944,9 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
-dev = [
-    { name = "psycopg", extras = ["binary"], specifier = ">=3.2.5" },
-    { name = "pytest-django", specifier = ">=4.10.0" },
-]
+dev = [{ name = "psycopg", extras = ["binary"], specifier = ">=3.2.5" }]
 prod = [
     { name = "gunicorn", specifier = ">=23.0.0" },
     { name = "psycopg", extras = ["c"], specifier = ">=3.2.5" },
 ]
+test = [{ name = "pytest-django", specifier = ">=4.10.0" }]
