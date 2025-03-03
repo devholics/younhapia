@@ -224,6 +224,15 @@ wheels = [
 ]
 
 [[package]]
+name = "django-hosts"
+version = "6.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/b0/05/217d45b4e5f0003d19322badae2ba96f242f42e51626402437b0839f2fb8/django-hosts-6.0.tar.gz", hash = "sha256:e7aec357504d36f384c65fba67deabc4552f36f347b96bb7a3d131a1250d7299", size = 36429 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d5/ab/ad0298e961e709108b34e64ce490064723063296efdd48dc29f38d2864dd/django_hosts-6.0-py3-none-any.whl", hash = "sha256:34a97a183b3fb8a00de3e0a8af5355a25ff5203019d2e213edd8f12c330cc303", size = 27799 },
+]
+
+[[package]]
 name = "django-modelcluster"
 version = "6.4"
 source = { registry = "https://pypi.org/simple" }
@@ -904,6 +913,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "django" },
     { name = "django-allauth", extra = ["socialaccount"] },
+    { name = "django-hosts" },
     { name = "django-storages", extra = ["google"] },
     { name = "djangorestframework" },
     { name = "wagtail" },
@@ -924,6 +934,7 @@ prod = [
 requires-dist = [
     { name = "django", specifier = ">=5.1.6" },
     { name = "django-allauth", extras = ["socialaccount"], specifier = ">=65.4.1" },
+    { name = "django-hosts", specifier = ">=6.0" },
     { name = "django-storages", extras = ["google"], specifier = ">=1.14.5" },
     { name = "djangorestframework", specifier = ">=3.15.2" },
     { name = "wagtail", specifier = ">=6.4.1" },
