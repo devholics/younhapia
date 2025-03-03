@@ -9,7 +9,7 @@ RUN python -m venv /opt/venv
 ENV VIRTUAL_ENV="/opt/venv"
 
 COPY ./pyproject.toml ./uv.lock ./
-RUN uv sync --frozen --group prod
+RUN uv sync --frozen --no-dev --group prod
 
 FROM python:3.12-alpine
 
